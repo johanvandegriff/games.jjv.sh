@@ -75,7 +75,7 @@ def stoichiometry():
         optional_args = ""
         if "compound" in args and "grams_or_moles" in args and "grams_or_moles_value" in args:
             compound = chem_whitelist(args["compound"])
-            grams_or_moles = args["grams_or_moles"]
+            grams_or_moles = chem_whitelist(args["grams_or_moles"])
             grams_or_moles_value = chem_whitelist(args["grams_or_moles_value"])
             optional_args = " '" + compound + "' " + grams_or_moles_value + " " + grams_or_moles
         result = os.popen("java -jar Stoichiometry.jar '" + equation + "'" + optional_args).read()
@@ -85,31 +85,31 @@ def stoichiometry():
 #START MATH.pl
 @app.route("/math.pl")
 def math_page():
-    return render_template("math.html", nav=nav, active="math")
+    return render_template("math.html", nav=nav, active="math.pl")
 
 @app.route("/math_game.pl", methods=["GET", "POST"])
 def math_game():
-    return run_perl_page(request, "math_game.pl", "Math")
+    return run_perl_page(request, "math_game.pl", "math.pl")
 
 @app.route("/math_score.pl", methods=["GET", "POST"])
 def math_score():
-    return run_perl_page(request, "math_score.pl", "Math")
+    return run_perl_page(request, "math_score.pl", "math.pl")
 #END MATH.pl
 
 #START WHACK.pl
 @app.route("/whack.pl", methods=["GET", "POST"])
 def whack_page():
-    return run_perl_page(request, "whack.pl", "whack")
+    return run_perl_page(request, "whack.pl", "whack.pl")
 #END WHACK.pl
 
 #START MAZE.pl
 @app.route("/maze.pl")
 def maze_page():
-    return render_template("maze.html", nav=nav, active="maze")
+    return render_template("maze.html", nav=nav, active="maze.pl")
 
 @app.route("/showmaze.pl", methods=["GET", "POST"])
 def showmaze_page():
-    return run_perl_page(request, "showmaze.pl", "maze")
+    return run_perl_page(request, "showmaze.pl", "maze.pl")
 #END MAZE.pl
 
 #START CIRCULAR MAZE

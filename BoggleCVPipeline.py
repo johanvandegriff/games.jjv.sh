@@ -12,7 +12,7 @@ from tensorflow import keras
 from tensorflow.keras import datasets, layers, models
 print(tf.__version__)
 
-MODEL_FILE="/srv/boggle/model.h5"
+MODEL_FILE="/srv/boggle/new_model.h5"
 IMG_DIM = 30
 class_names = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 L = len(class_names)
