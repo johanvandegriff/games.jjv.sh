@@ -59,7 +59,7 @@ def tensorflow_check():
 
 #START STOICHIOMETRY
 def chem_whitelist(s):
-    return re.sub('[^a-zA-Z\d\w.()+-=>→↔⇆]', '', s)
+    return re.sub(r'[^\w.()+\-=>→↔⇆]', '', s)
 
 @app.route("/chem", methods=["GET", "POST"])
 def stoichiometry():

@@ -17,13 +17,17 @@
 
 # profanity-filter2 and its deps:
 profanity-filter2==1.4.3
-ordered-set==4.1.0
+
+async-timeout==5.0.0
 cached-property==2.0.1
 dataclasses==0.6
-poetry-version==0.2.0
 more-itertools==10.5.0
+ordered-set==4.1.0
+poetry-version==0.2.0
 redis==5.2.0
 ruamel.yaml==0.18.6
+ruamel.yaml.clib==0.2.12
+tomlkit==0.5.11
 
 # stuff from pip freeze:
 absl-py==2.1.0
