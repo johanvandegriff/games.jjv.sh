@@ -54,7 +54,7 @@ h5py==3.12.1
 idna==3.10
 itsdangerous==2.2.0
 Jinja2==3.1.4
-keras==3.6.0
+keras==3.9.0
 langcodes==3.4.1
 language_data==1.2.0
 libclang==18.1.1
