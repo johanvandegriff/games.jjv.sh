@@ -1,10 +1,17 @@
-FROM python:3.10
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y libcgi-session-perl libhunspell-dev default-jre && rm -rf /var/lib/apt/lists/*
-COPY .  /app
+FROM golang:1.23.5 AS builder
+ARG CGO_ENABLED=0
 WORKDIR /app
-RUN pip install --no-deps -r requirements.txt
-#RUN python -m spacy download en
-EXPOSE 5000
-# CMD ["python", "games.py"]
-CMD ["gunicorn", "games:app", "--bind", "0.0.0.0:5000"]
+
+COPY go.mod go.sum ./
+RUN go mod download
+COPY src/*.go .
+
+RUN CGO_ENABLED=0 GOOS=linux go build -o server
+
+FROM scratch
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+WORKDIR /app
+COPY --from=builder /app/server .
+COPY . .
+EXPOSE 8080
+ENTRYPOINT ["/app/server"]

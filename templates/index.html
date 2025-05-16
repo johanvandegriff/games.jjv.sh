@@ -1,19 +1,38 @@
-{% include 'header.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {{template "head.html" .}}
+    <title>games.jjv.sh</title>
+</head>
+<body class="games-font">
+    {{template "header.html" .}}
+    <h1>Games</h1>
+    <ul>
+        <li><a href="/boggle">Boggle</a> - a multiplayer word puzzle</li>
+        <li><a href="/carl">CARL</a> - a chatbot (made before chatgpt, similar to cleverbot), bare API <a href="/carl/api">here</a></li>
+        <li><a href="/chem">Stoichiometry</a> - a chemical equation solver (written in Java)</li>
+        <li><a href="/hornswiggle">Dr. Hornswiggle's Trancendental Ideations Generator</a></li>
+        <li><a href="/maze">Circular Maze</a> - generate circular mazes of different sizes</li>
+        <li><a href="/pl/maze.pl">maze.pl</a> - an old game I wrote in perl</li>
+        <li><a href="/pl/math.pl">math.pl</a> - a math worksheet (also perl)</li>
+        <li><a href="/pl/whack.pl">whack.pl</a> - whack-a-mole, another perl game</li>
+    </ul>
 
-<h1>Games</h1>
-<ul>
-<li><a href="/boggle">Boggle</a> - a multiplayer word puzzle</li>
-<li><a href="/carl">CARL</a> - a chatbot (bare API <a href="/carl_api">here</a>)</li>
-<li><a href="/chem">Stoichiometry</a> - a chemical equation solver (written in Java)</li>
-<li><a href="/hornswiggle">Dr. Hornswiggle's Trancendental Ideations Generator</a> - hmmm... You'd better just see for yourself.</li>
-<li><a href="/maze">Circular Maze</a> - generate circular mazes of different sizes</li>
-<li><a href="/maze.pl">Maze.pl</a> - an old game I wrote in perl</li>
-<li><a href="/math.pl">Math.pl</a> - a math worksheet (also perl)</li>
-<li><a href="/whack.pl">Whack.pl</a> - Whack-A-Mole, another perl game</li>
-</ul>
+    <h2>Tech Info</h2>
+    <p>This site uses micro-frontends, where each game is its own app, with an overarching proxy app to stitch them all together.</p>
+    <ul>
+        <li><a href="https://codeberg.org/johanvandegriff/games.jjv.sh">proxy app</a> - written in golang, since that language is good for network and relatively efficient, which it needs to be because all the packets go through the proxy when using any of the other apps so we don't want to add too much latency</li>
+        <li><a href="https://codeberg.org/johanvandegriff/boggle">boggle app</a> - written in python flask, with vuejs frontend, and mongodb database</li>
+        <li><a href="https://codeberg.org/johanvandegriff/boggle-old">old boggle app</a> - written in raw python (since I didn't know flask at the time) with a JSON file as the "database"</li>
+        <li><a href="https://codeberg.org/johanvandegriff/CARL">CARL app</a> - another python flask app</li>
+        <li><a href="https://codeberg.org/johanvandegriff/Stoichiometry">Stoichiometry app</a> - java</li>
+        <li><a href="https://codeberg.org/johanvandegriff/hornswiggle">hornswiggle app</a> - flask</li>
+        <li><a href="https://codeberg.org/johanvandegriff/circular-maze">circular maze app</a> - flask</li>
+        <li><a href="https://codeberg.org/johanvandegriff/perl-games">perl games app</a> - written in perl but with a flask wrapper, could probably migrate back to apache with CGI</li>
+    </ul>
+    <br/>
 
-<br/>
-
-<h6><a href="https://jjv.sh/">Back to main site</a></h6>
-
-{% include 'footer.html' %}
+    <p>Back to <a href="https://jjv.sh/">jjv.sh</a></p>
+    {{template "footer.html" .}}
+</body>
+</html>

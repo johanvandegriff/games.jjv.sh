@@ -4,102 +4,71 @@ This CSS source code is licensed under the GNU Affero General Public License 3.0
 The full source code is available at: https://codeberg.org/johanvandegriff/games.jjv.sh
 */
 
+html {
+  height: 100%;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-}
-
-p {
-  font-size: medium;
-}
-
-div.img {
-  border: 1px solid #ccc;
-  float: left;
-  margin: 5px;
-  width: 180px;
-}
-
-div.img:hover {
-  border: 1px solid #777;
-}
-
-div.img img {
-  height: auto;
+  display: table;
   width: 100%;
-}
-
-.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-a.svg {
-  display: inline-block;
-  position: relative;
-}
-
-.svg:after {
-  bottom: 0;
-  content: "";
-  left:0;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-#ribbon {
-  background-color: #000000;
-  clear: both;
-  height: 180px;
+  height: 100%;
   margin: 0;
-  position: absolute;
+}
+
+.games-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+.games-ribbon {
+  background-color: #000000;
+  margin: 0;
   text-align: center;
-  top: 0;
   width:100%;
 }
 
-#titleText, #asciiArt, #asciiArtSmall {
+#games-title-small, #games-title-large, #games-title-medium {
   overflow: hidden;
 }
 
-#main {
-  margin: 0;
-  margin-top: 205px;
-  padding: 0;
+.games-pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
 }
 
-section {
-  padding: 10px;
+.games-green-link {
+  color: #0f0;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-aside {
-  font-family: 'Monospace', sans-serif;
-  background-color: #000000;
-  margin: 0;
-  margin-left: 10px;
-  max-width: 200px;
-  padding: 4px;
-  width: 25%;
-  z-index: -1;
+.games-footer {
+  display: table-row;
+  text-align: center;
+  font-size: smaller;
 }
 
-.left {
-  float: left;
+.games-footer > div {
+  vertical-align: middle;
+  display: table-cell;
+  height: 2rem;
 }
 
-.right {
-  float: right;
+.games-dark {
+  background-color: #333;
+  color: white;
 }
 
-#middle section {
-  margin: 5px;
-  margin-left: 210px;
-  margin-right: 210px;
-  overflow: hidden;
+.games-dark a:link { color: lightskyblue; }
+.games-dark a:visited { color: #6d4b8d; }
+.games-dark a:hover { color: #ffffff; }
+.games-dark a:active { color: #ff4040; text-decoration:none; font-weight:normal; }
+
+.games-main {
+  margin: 1rem;
 }
 
-nav ul {
+.games-nav ul {
   background-color: #333;
   border-top: 1px solid #0f0;
   font-weight: bold;
@@ -109,11 +78,11 @@ nav ul {
   padding: 0;
 }
 
-nav ul li {
+.games-nav ul li {
   float: left;
 }
 
-nav ul li a {
+.games-nav ul li a {
   color: white;
   display: block;
   padding: 10px 0;
@@ -121,121 +90,21 @@ nav ul li a {
   text-decoration: none;
 }
 
-nav ul li a:hover:not(.active) {
+.games-nav ul li a:hover {
   background-color: #111;
   transition: all .4s;
 }
 
-#active {
+#games-active a:hover {
+  background-color: #203;
+  transition: all .4s;
+}
+
+#games-active {
   background-color: #631fa3;
 }
 
-.box {
-  border: 1px solid gray;
-  margin: auto;
-  width: 75%;
-}
-
-.title {
-  background: #0f0;
-  font-size: 30px;
-  font-weight: bold;
-  text-align: center;
-}
-
-footer {
-  padding: 10px;
-}
-
-.greenLink {
-  color: #0f0;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.blue {
-  color: #1018ee;
-}
-
-.orange {
-  color: #eb7f36;
-}
-
-.purple {
-  color: #631fa3;
-}
-
-.terminal {
-  font-family: 'Monospace', sans-serif;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  display: inline-block;
-}
-
-.img65 {
-    width:65%;
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-.img65left {
-    width:65%;
-    display:block;
-    margin-left:0;
-}
-
-.img35left {
-    width:35%;
-    display:block;
-    margin-left:0;
-}
-
-.mono {
-    font-family: 'Monospace', sans-serif;
-}
-
-.greenButton, .purpleButton, .redButton, .blueButton, .grayButton {
-  font-size: 1em;
-  height: 2em;
-  /* background: #10ee10; */
-  /* text-align: center; */
-  /* margin: 0 auto; */
-  border-radius: 0.3em;
-  border: 2px solid black;
-  /* display: inline-block; */
-}
-
-.bigButton {
-  font-size: 1.2em;
-  margin: 3px;
-}
-
-input[type="submit"].greenButton{
-  background: #10ee10;
-}
-
-input[type="submit"].purpleButton {
-  background: #631fa3;
-  color: white;
-}
-
-input[type="submit"].redButton {
-  background: #f00;
-  color: white;
-}
-
-input[type="submit"].blueButton {
-  background: #9af;
-  /* color: white; */
-}
-
-input[type="submit"].grayButton {
-  background: #ccc;
-}
-
-#navToggle {
+#games-nav-toggle {
   position: absolute;
   left: 0;
   top: 0;
@@ -248,7 +117,7 @@ input[type="submit"].grayButton {
   padding: 0;
 }
 
-#navDropdown {
+#games-nav-dropdown {
   color: white;
   background-color: #333;
   border-top: 1px solid #0f0;
@@ -262,70 +131,51 @@ input[type="submit"].grayButton {
   transition: all .4s;
 }
 
-nav:hover #navDropdown {
+.games-nav:hover #games-nav-dropdown {
   background-color: #111;
 }
 
 
 @media all and (max-width: 915px) {
-  #asciiArt {
+  #games-title-large {
     display: none;
-  }
-  #main {
-    margin-top: 135px;
-  }
-  #ribbon {
-    height: 135px;
   }
 }
 
 @media not all and (max-width: 915px) {
-  #asciiArtSmall {
+  #games-title-medium {
     display: none;
   }
 }
 
 @media not all and (max-width: 720px) {
-  .hideLarge {
+  #games-title-small {
     display: none;
   }
-
-
-
-  #titleText {
-    display: none;
-  }
-  #navDropdown {
+  #games-nav-dropdown {
     display: none;
   }
 }
 
 @media all and (max-width: 720px) {
-
-  #asciiArt {
+  #games-title-large {
     display: none;
   }
-  #asciiArtSmall {
+  #games-title-medium {
     display: none;
   }
-  #ribbon {
-    height: 80px;
-  }
-  #main {
-    margin-top: 80px;
-  }
 
-  nav {
+  .games-nav {
       margin: auto;
       position: relative;
-      height: 50px;
+      height: 40px;
       z-index: 99;
   }
 
-  #navToggle:checked ~ul {
+  #games-nav-toggle:checked ~ul {
     height: 0%;
   }
-  nav ul {
+  .games-nav ul {
     padding-left: 0;
     padding-top: 0;
     margin-top: 0;
@@ -336,7 +186,7 @@ nav:hover #navDropdown {
     transition: all .4s ease-out;
   }
 
-  nav ul li {
+  .games-nav ul li {
     border-radius: 6px;
     margin:5px 5px;
     text-align: center;
@@ -346,7 +196,7 @@ nav:hover #navDropdown {
     z-index: 100;
   }
 
-  nav ul li a {
+  .games-nav ul li a {
     padding: 10px;
   }
 }

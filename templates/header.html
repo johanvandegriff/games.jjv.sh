@@ -1,32 +1,13 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<!--
-This HTML source code and the Python/Flask/Jinja/Perl source code used to generate it is licensed under the GNU Affero General Public License 3.0. (https://www.gnu.org/licenses/agpl-3.0.html)
+<div class="games-ribbon"><header><a href="/" class="games-green-link"><div class="games-pre" id="games-title-small">
+games.jjv.sh
 
-The source code is available at: https://codeberg.org/johanvandegriff/games.jjv.sh
--->
-<link rel="stylesheet" type="text/css" href="/static/style.css">
-{% if stylesheet %}
-<link rel="stylesheet" type="text/css" href="/static/{{ stylesheet }}.css">
-{% endif %}
-<title>{{active}} | games.jjv.sh | Johan Vandegriff</title>
-<meta name="description" content="Johan Vandegriff's collection of games.">
-<link rel="icon" href="/static/favicon.ico?" type="image/x-icon">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  @media not all and (max-width: 720px) {
-    nav ul li {
-      width:{{ 100.0/nav|length() }}%
-    }
-  }
-</style>
-</head>
-<body>
-<div id="ribbon"><header><a href="/" class="greenLink"><pre id="titleText">games.jjv.sh</pre><pre id="asciiArtSmall">
+</div><div class="games-pre" id="games-title-medium">
   _   _   _ _   _  _     ___  ___        _      
  |   |_| | | | |_ |_      |    |  | /   |_  |_| 
  |_| | | | | | |_  _| o |_|  |_|  |/  o  _| | | 
 
-</pre><pre id="asciiArt">
+
+</div><div class="games-pre" id="games-title-large">
                                               _     _                _       
                                              (_)   (_)              | |      
    ___ _  ___ _  _________  ____   ___        _     _  _   __   ___ | |___   
@@ -34,13 +15,15 @@ The source code is available at: https://codeberg.org/johanvandegriff/games.jjv.
   | (_| || (_| || | | | | || ___/|___ | _    | |   | || |/ /_ |___ || | | |  
   (___, |(___,_||_| |_| |_|\____)(___/ (_) _ | | _ | ||___/(_)(___/ |_| |_|  
    ___| |                                 | || || || |                       
-  (_____)                                 (____)(____)                       </pre>
+  (_____)                                 (____)(____)                       
+
+</div>
 </a></header>
-<nav><div id="navDropdown">&#9776;</div><input id="navToggle" type="checkbox" checked><ul>
-{% for item in nav %}
-<li{% if active == item[0] %} id="active"{% endif %}><a href="{{ item[1] }}">{{ item[0] }}</a></li>
-{% endfor %}
+<nav class="games-nav games-font"><div id="games-nav-dropdown">&#9776;</div><input id="games-nav-toggle" type="checkbox" checked><ul>
+{{- range .nav }}
+<li{{ if eq $.active .Name }} id="games-active"{{ end }}>
+    <a href="{{ (index .URLs 0) }}">{{ .Name }}</a>
+</li>
+{{- end }}
 </ul></nav></div>
-<div id="main">
-<!-- TODO: aside -->
-<section>
+<div class="games-main">
